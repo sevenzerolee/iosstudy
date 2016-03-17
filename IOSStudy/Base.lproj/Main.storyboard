@@ -26,7 +26,6 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Test" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPt-il-zxR">
                                 <rect key="frame" x="72" y="209" width="64" height="21"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -93,7 +92,6 @@
         <!--Tab Bar Controller-->
         <scene sceneID="fdI-U5-FGs">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WSQ-pu-Cn1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController id="RgT-gw-W61" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="dgf-5Z-tT6">
@@ -107,6 +105,7 @@
                         <segue destination="Kcr-0d-Svq" kind="relationship" relationship="viewControllers" id="aRs-zX-l1V"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WSQ-pu-Cn1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-934" y="1540"/>
         </scene>
@@ -193,12 +192,15 @@
                         <viewControllerLayoutGuide type="bottom" id="dSu-g0-gMv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4Gc-W1-bTJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQi-hc-rlW">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                            <button alpha="0.10000000000000001" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQi-hc-rlW">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="cancel:" destination="lyC-lm-MiH" eventType="touchUpInside" id="uMW-VB-vJu"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="settings_triangle.png" translatesAutoresizingMaskIntoConstraints="NO" id="N36-bL-QOt">
                                 <rect key="frame" x="55" y="194" width="86" height="86"/>
@@ -221,22 +223,28 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZs-fP-n9k">
                                 <rect key="frame" x="97" y="452" width="180" height="31"/>
                                 <state key="normal" title="取消"/>
+                                <connections>
+                                    <action selector="hide:" destination="lyC-lm-MiH" eventType="touchUpInside" id="Nvo-z6-I6v"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Test" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vmq-jL-M32">
-                                <rect key="frame" x="61" y="213" width="64" height="21"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTQ-me-FCg">
+                                <rect key="frame" x="64" y="211" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="bgBtn" destination="XQi-hc-rlW" id="dCA-VW-T0x"/>
+                        <outlet property="sTitle" destination="OTQ-me-FCg" id="wyk-GC-iQk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v54-Ob-HMP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-863" y="2500"/>
+            <point key="canvasLocation" x="-863.5" y="2499.5"/>
         </scene>
     </scenes>
     <resources>

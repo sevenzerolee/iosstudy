@@ -17,6 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [sTitle setText:@"设置"];
+    [sTitle setBackgroundColor:[UIColor clearColor]];
+    [sTitle setTransform:CGAffineTransformMakeRotation(-M_PI / 4)];
+    
+//    bgBtn.backgroundColor = [UIColor clearColor];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,4 +41,15 @@
 }
 */
 
+- (IBAction)hide:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"返回");
+    }];
+}
+
+- (IBAction)cancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"返回");
+    }];
+}
 @end

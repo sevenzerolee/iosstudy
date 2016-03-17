@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MenuViewController : UIViewController
+@interface MenuViewController : UIViewController {
+    
+    IBOutlet UILabel *sTitle;
+    IBOutlet UIButton *bgBtn;
+    
+}
+
+- (IBAction)hide:(id)sender;
+- (IBAction)cancel:(id)sender;
 
 @end

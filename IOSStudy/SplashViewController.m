@@ -11,6 +11,7 @@
 #import "CustomAlertView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "CAlertView.h"
+#import "AppDelegate.h"
 
 @interface SplashViewController ()
 
@@ -30,6 +31,8 @@
 //    [image setImage:@"settings_triangle.png"];
 //    [background addSubview:image];
 //    [background sendSubviewToBack:image];
+    
+    self.title = @"Test";
     
     NSLog(@"label value %@", [label text]);
     [label setText:@"设置"];
@@ -152,8 +155,39 @@
 - (IBAction)test:(id)sender {
     NSLog(@"click");
     
-//    float sWidth = self.view.bounds.size.width;
-//    float sHeight = self.view.bounds.size.height;
+    float sWidth = self.view.bounds.size.width;
+    float sHeight = self.view.bounds.size.height;
+    
+//    self.view.window.rootViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+//    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+//    self.view.backgroundColor = [UIColor clearColor];
+    
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    UIViewController *mvc = (UIViewController *)delegate.mvc;
+    
+//    mvc.view.frame = CGRectMake(0, sHeight, sWidth, sHeight);
+//    
+//    [self.view addSubview:mvc.view];
+//    
+//    [UIView animateWithDuration:0.5 animations:^{
+//        mvc.view.frame = CGRectMake(0, 0, sWidth, sHeight);
+//    } completion:^(BOOL finished) {
+//        NSLog(@"切换");
+//    }];
+    
+    
+    
+    
+//    mvc.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2] ;
+//    mvc.view.alpha = 0;
+//    mvc.view.backgroundColor = [UIColor clearColor];
+    mvc.modalPresentationStyle = UIModalPresentationCurrentContext;
+    
+    
+    [self presentViewController: mvc animated:YES completion:^{
+        NSLog(@"视图切换");
+    }];
+    
 //    float vWidth = 300;
 //    float vHeight = 150;
     
