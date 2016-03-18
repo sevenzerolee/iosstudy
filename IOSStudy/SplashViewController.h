@@ -16,5 +16,7 @@
 
 @property (nonatomic, strong) NSString *extra;
 - (IBAction)test:(id)sender;
+- (IBAction)alert:(id)sender;
+- (IBAction)view:(id)sender;
 
 @end

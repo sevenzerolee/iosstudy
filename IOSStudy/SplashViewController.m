@@ -155,8 +155,8 @@
 - (IBAction)test:(id)sender {
     NSLog(@"click");
     
-    float sWidth = self.view.bounds.size.width;
-    float sHeight = self.view.bounds.size.height;
+//    float sWidth = self.view.bounds.size.width;
+//    float sHeight = self.view.bounds.size.height;
     
 //    self.view.window.rootViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
 //    self.modalPresentationStyle = UIModalPresentationCurrentContext;
@@ -181,12 +181,36 @@
 //    mvc.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2] ;
 //    mvc.view.alpha = 0;
 //    mvc.view.backgroundColor = [UIColor clearColor];
-    mvc.modalPresentationStyle = UIModalPresentationCurrentContext;
+//    mvc.modalPresentationStyle = UIModalPresentationCurrentContext;
+    mvc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+        mvc.providesPresentationContextTransitionStyle = YES;
+        mvc.definesPresentationContext = YES;
+        mvc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        
+        [self presentViewController:mvc animated:YES completion:^{
+            NSLog(@"视图切换");
+        }];
+    }
+    else {
+        self.view.window.rootViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+        [self presentViewController:mvc animated:NO completion:^{
+            NSLog(@"视图切换");
+        }];
+        self.view.window.rootViewController.modalPresentationStyle = UIModalPresentationFullScreen;
     
+    }
     
-    [self presentViewController: mvc animated:YES completion:^{
-        NSLog(@"视图切换");
-    }];
+//    self.view.window.rootViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+//    [self.view.window.rootViewController presentViewController:mvc animated:YES completion:^{
+//        NSLog(@"视图切换");
+////        mvc.view.backgroundColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+//    }];
+//    self.view.window.rootViewController.modalPresentationStyle = UIModalPresentationFullScreen;
+    
+//    [self presentViewController: mvc animated:YES completion:^{
+//        NSLog(@"视图切换");
+//    }];
     
 //    float vWidth = 300;
 //    float vHeight = 150;
@@ -254,4 +278,39 @@
 //        view = nil;
 //    [alert show];
 }
+
+- (IBAction)alert:(id)sender {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Alert"
+                                                        message:@"AlertMessage"
+                                                       delegate:self
+                                              cancelButtonTitle:@"ok"
+                                              otherButtonTitles:nil, nil];
+    [alert show];
+}
+
+- (IBAction)view:(id)sender {
+    NSLog(@"###");
+//    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+//    UIViewController *vc = (UIViewController *)delegate.cvc;
+//    UIView *view = [vc view];
+    
+    
+    
+//    delegate.window.rootViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+//    [delegate.window.rootViewController presentViewController:vc animated:YES completion:^{
+//        delegate.window.rootViewController.modalPresentationStyle = UIModalPresentationFullScreen;
+//    }];
+    
+}
+
+
+//
+
+
+
+
+
+
+
+
 @end

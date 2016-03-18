@@ -11,6 +11,7 @@
 #import "AViewController.h"
 #import "BViewController.h"
 #import "MenuViewController.h"
+#import "CustomViewController.h"
 
 @interface AppDelegate ()
 
@@ -24,6 +25,7 @@
 @synthesize aViewController = aViewController;
 @synthesize bViewController = bViewController;
 @synthesize mvc = mvc;
+@synthesize cvc = cvc;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -47,7 +49,9 @@
     splashViewController = [story instantiateViewControllerWithIdentifier:@"SplashViewController"];
     splashViewController.title = @"splash";
     
-    mvc = [story instantiateViewControllerWithIdentifier:@"MenuViewController"];
+    mvc = [story instantiateViewControllerWithIdentifier:@"CustomViewController"];
+//    mvc = [story instantiateViewControllerWithIdentifier:@"MenuViewController"];
+//    cvc = [story instantiateViewControllerWithIdentifier:@"CustomViewController"];
     
     tabBarController.viewControllers = @[splashViewController, aViewController, bViewController];
     

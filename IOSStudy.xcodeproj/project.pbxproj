@@ -25,6 +25,7 @@
 		689F78D91C9909AD00F4F09C /* AViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 689F78D81C9909AD00F4F09C /* AViewController.m */; };
 		689F78DC1C9909C400F4F09C /* BViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 689F78DB1C9909C400F4F09C /* BViewController.m */; };
 		689F79051C99380400F4F09C /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 689F79041C99380400F4F09C /* MenuViewController.m */; };
+		689F790F1C9BCCE500F4F09C /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 689F790E1C9BCCE500F4F09C /* CustomViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,8 @@
 		689F78DB1C9909C400F4F09C /* BViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BViewController.m; sourceTree = "<group>"; };
 		689F79031C99380400F4F09C /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		689F79041C99380400F4F09C /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		689F790D1C9BCCE500F4F09C /* CustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomViewController.h; sourceTree = "<group>"; };
+		689F790E1C9BCCE500F4F09C /* CustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +93,7 @@
 		688C94C21C450A810095D466 /* IOSStudy */ = {
 			isa = PBXGroup;
 			children = (
+				689F79061C9BB1FF00F4F09C /* window */,
 				689F78D61C99096A00F4F09C /* viewcontroller */,
 				689F78C71C97E4A300F4F09C /* customalertview */,
 				689F78C01C97B12400F4F09C /* images */,
@@ -159,8 +163,17 @@
 				689F78DB1C9909C400F4F09C /* BViewController.m */,
 				689F79031C99380400F4F09C /* MenuViewController.h */,
 				689F79041C99380400F4F09C /* MenuViewController.m */,
+				689F790D1C9BCCE500F4F09C /* CustomViewController.h */,
+				689F790E1C9BCCE500F4F09C /* CustomViewController.m */,
 			);
 			name = viewcontroller;
+			sourceTree = "<group>";
+		};
+		689F79061C9BB1FF00F4F09C /* window */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = window;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +258,7 @@
 				688C94C81C450A810095D466 /* AppDelegate.m in Sources */,
 				688C94C51C450A810095D466 /* main.m in Sources */,
 				689F78CD1C98011F00F4F09C /* CAlertView.m in Sources */,
+				689F790F1C9BCCE500F4F09C /* CustomViewController.m in Sources */,
 				689F78D91C9909AD00F4F09C /* AViewController.m in Sources */,
 				689F78CA1C97E51F00F4F09C /* CustomAlertView.m in Sources */,
 				689F79051C99380400F4F09C /* MenuViewController.m in Sources */,

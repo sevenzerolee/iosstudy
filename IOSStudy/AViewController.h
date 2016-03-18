@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AViewController : UIViewController<UIWebViewDelegate> {
-    UIWebView *webview;
+@interface AViewController : UIViewController<UIWebViewDelegate, UISearchBarDelegate> {
+//    UIWebView *webview;
+    
+    IBOutlet UISearchBar *search;
+    IBOutlet UIWebView *webview;
+    IBOutlet UIToolbar *toolbar;
+    IBOutlet UIBarButtonItem *back;
+    IBOutlet UIBarButtonItem *forward;
 }
+- (IBAction)back:(id)sender;
+- (IBAction)forward:(id)sender;
 
 @end

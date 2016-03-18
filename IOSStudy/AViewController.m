@@ -20,15 +20,24 @@
     NSLog(@"A");
     self.title = @"WebView";
     
-    float width = self.view.bounds.size.width;
-    float height = self.view.bounds.size.height;
-    webview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+//    float width = self.view.bounds.size.width;
+//    float height = self.view.bounds.size.height;
+//    webview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+    webview.dataDetectorTypes = UIDataDetectorTypeAll;
     webview.delegate = self;
     
-    [self.view addSubview:webview];
+//    [self.view addSubview:webview];
     
     NSString *server = @"http://www.baidu.com";
-    NSURL *url = [NSURL URLWithString:server];
+    [self request:server];
+    
+    search.text = server;
+    search.delegate = self;
+    
+}
+
+- (void)request:(NSString *)str {
+    NSURL *url = [NSURL URLWithString:str];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [webview loadRequest:request];
 }
@@ -38,7 +47,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-// webview
+// webview start
 
 #pragma mark - WebView 代理方法
 #pragma mark 开始加载
@@ -60,7 +69,17 @@
 //    [alert show];
 }
 
-// webview
+// webview end
+
+// search start
+
+#pragma mark - SearchBar 代理方法
+#pragma mark 点击搜索按钮或回车
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [self request:searchBar.text];
+}
+
+// search end
 
 /*
 #pragma mark - Navigation
@@ -72,4 +91,15 @@
 }
 */
 
+- (IBAction)back:(id)sender {
+    if (webview.canGoBack) {
+        [webview goBack];
+    }
+}
+
+- (IBAction)forward:(id)sender {
+    if (webview.canGoForward) {
+        [webview goForward];
+    }
+}
 @end

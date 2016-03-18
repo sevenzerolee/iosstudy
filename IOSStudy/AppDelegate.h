@@ -12,6 +12,7 @@
 @class AViewController;
 @class BViewController;
 @class MenuViewController;
+@class CustomViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate> {
     SplashViewController *splashViewController;
@@ -20,6 +21,7 @@
     AViewController *aViewController;
     BViewController *bViewController;
     MenuViewController *mvc;
+    CustomViewController *cvc;
 }
 
 @property (strong, nonatomic) UIWindow *window;
@@ -29,6 +31,7 @@
 @property (strong, nonatomic) AViewController *aViewController;
 @property (strong, nonatomic) BViewController *bViewController;
 @property (strong, nonatomic) MenuViewController *mvc;
+@property (strong, nonatomic) CustomViewController *cvc;
 
 
 @end
