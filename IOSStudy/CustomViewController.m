@@ -101,6 +101,7 @@
     
     [alphaView addSubview:cancel];
     [cancel addTarget:self action:@selector(dissmiss) forControlEvents:UIControlEventTouchUpInside];
+    
 }
 
 - (void)didReceiveMemoryWarning {
