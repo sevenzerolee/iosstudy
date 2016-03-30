@@ -7,6 +7,7 @@
 //
 
 #import "CustomViewController.h"
+#import "Constants.h"
 
 #define BUTTON_WIDTH 180
 #define BUTTON_HEIGHT 40
@@ -146,11 +147,13 @@
 - (void)setServerUrl {
     NSLog(@"###");
     
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                    message:@"AlertMessage"
+    // 提示  请输入服务地址
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"请输入服务地址"
+                                                    message:@""
                                                    delegate:self
-                                          cancelButtonTitle:@"ok"
-                                          otherButtonTitles:nil, nil];
+                                          cancelButtonTitle:STR_CANCEL
+                                          otherButtonTitles:STR_OK, nil];
+    [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
     [alert show];
     
     [self dissmiss];
@@ -158,6 +161,20 @@
 
 - (void)setUserInfo {
     NSLog(@"###");
+    
+    // 提示  请输入用户信息
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"请输入用户信息"
+                                                    message:@""
+                                                   delegate:self
+                                          cancelButtonTitle:STR_CANCEL
+                                          otherButtonTitles:STR_OK, nil];
+    [alert setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
+    UITextField *username = [alert textFieldAtIndex:0];
+    [username setPlaceholder:@"请输入用户名"];
+    UITextField *passwd = [alert textFieldAtIndex:1];
+    [passwd setPlaceholder:@"请输入密码"];
+    
+    [alert show];
     
     [self dissmiss];
 }
@@ -177,5 +194,32 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    NSLog(@"### AlertView Response %ld, %@", (long)buttonIndex, title);
+    
+    if ([STR_OK isEqualToString:title]) {
+        UITextField *tf=[alertView textFieldAtIndex:0];//获得输入框
+        NSLog(@"ok, %@", tf.text);
+    }
+    else {
+        NSLog(@"cancel");
+    }
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
+    NSLog(@"### AlertView willDismissWithButtonIndex ");
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    NSLog(@"### AlertView didDismissWithButtonIndex ");
+}
+
+- (void)alertViewCancel:(UIAlertView *)alertView {
+    NSLog(@"### AlertView alertViewCancel ");
+}
 
 @end
