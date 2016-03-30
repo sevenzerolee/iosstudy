@@ -8,6 +8,7 @@
 
 #import "CustomViewController.h"
 #import "Constants.h"
+#import "UserDefault.h"
 
 #define BUTTON_WIDTH 180
 #define BUTTON_HEIGHT 40
@@ -17,12 +18,20 @@
 #define DIALOG_WIDTH 320
 #define DIALOG_HEIGHT 280
 
+#define TYPE_SET_URL 200
+#define TYPE_SET_USERINFO 201
+#define TYPE_CHECK_UPDATE 202
+
 
 @interface CustomViewController ()
 
 @end
 
-@implementation CustomViewController
+@implementation CustomViewController {
+    
+    NSInteger type;
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -96,7 +105,8 @@
     server.frame = CGRectMake(x, y, BUTTON_WIDTH, BUTTON_HEIGHT);
     [server setTitle:@"服务地址" forState:UIControlStateNormal];
     [server setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [server addTarget:self action:@selector(setServerUrl) forControlEvents:UIControlEventTouchUpInside];
+    [server setTag:TYPE_SET_URL];
+    [server addTarget:self action:@selector(setServerUrl:) forControlEvents:UIControlEventTouchUpInside];
     
 //    [alphaView addSubview:server];
     [set addSubview:server];
@@ -106,7 +116,8 @@
     up.frame = CGRectMake(x, y + BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT);
     [up setTitle:@"用户息息" forState:UIControlStateNormal];
     [up setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [up addTarget:self action:@selector(setUserInfo) forControlEvents:UIControlEventTouchUpInside];
+    [up setTag:TYPE_SET_USERINFO];
+    [up addTarget:self action:@selector(setUserInfo:) forControlEvents:UIControlEventTouchUpInside];
     
 //    [alphaView addSubview:up];
     [set addSubview:up];
@@ -116,7 +127,8 @@
     update.frame = CGRectMake(x, y + 2*BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT);
     [update setTitle:@"更新系统" forState:UIControlStateNormal];
     [update setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [update addTarget:self action:@selector(checkUpdate) forControlEvents:UIControlEventTouchUpInside];
+    [update setTag:TYPE_CHECK_UPDATE];
+    [update addTarget:self action:@selector(checkUpdate:) forControlEvents:UIControlEventTouchUpInside];
     
 //    [alphaView addSubview:update];
     [set addSubview:update];
@@ -144,8 +156,9 @@
     }];
 }
 
-- (void)setServerUrl {
-    NSLog(@"###");
+- (void)setServerUrl:(UIButton *)button{
+    NSLog(@"### %ld", [button tag]);
+    type = [button tag];
     
     // 提示  请输入服务地址
     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"请输入服务地址"
@@ -159,8 +172,9 @@
     [self dissmiss];
 }
 
-- (void)setUserInfo {
-    NSLog(@"###");
+- (void)setUserInfo:(UIButton *)button{
+    NSLog(@"### %ld", [button tag]);
+    type = [button tag];
     
     // 提示  请输入用户信息
     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"请输入用户信息"
@@ -179,8 +193,9 @@
     [self dissmiss];
 }
 
-- (void)checkUpdate {
-    NSLog(@"###");
+- (void)checkUpdate:(UIButton *)button{
+    NSLog(@"### %ld", [button tag]);
+    type = [button tag];
     
     [self dissmiss];
 }
@@ -201,8 +216,23 @@
     NSLog(@"### AlertView Response %ld, %@", (long)buttonIndex, title);
     
     if ([STR_OK isEqualToString:title]) {
-        UITextField *tf=[alertView textFieldAtIndex:0];//获得输入框
-        NSLog(@"ok, %@", tf.text);
+        if (type == TYPE_SET_URL) {
+            UITextField *url=[alertView textFieldAtIndex:0];//获得输入框
+            NSLog(@"ok, %@", [url text]);
+            
+            [UserDefault setRootUrl:[url text]];
+        }
+        else if (type == TYPE_SET_USERINFO) {
+            UITextField *username = [alertView textFieldAtIndex:0];
+            UITextField *password = [alertView textFieldAtIndex:1];
+            NSLog(@"ok, %@, %@", [username text], [password text]);
+            
+            [UserDefault setUserName:[username text]];
+            [UserDefault setPasswd:[password text]];
+        }
+        else if (type == TYPE_CHECK_UPDATE) {
+            NSLog(@"ok");
+        }
     }
     else {
         NSLog(@"cancel");

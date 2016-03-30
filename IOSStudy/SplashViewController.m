@@ -17,7 +17,7 @@
 
 @end
 
-@implementation SplashViewController
+@implementation SplashViewController 
 
 @synthesize extra = extra;
 
